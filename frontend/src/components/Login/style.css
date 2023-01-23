@@ -1,0 +1,73 @@
+
+.form{
+    width: 100%;
+    max-width: 520px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+    background: linear-gradient(90.21deg, #89C6FF -5.91%, #CAE3FF 111.58%);
+    margin-left: 37%;
+    margin-top: 10%;
+    border-radius: 35px;
+
+}
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    padding-bottom: 1rem;
+    max-width: 450px;
+    min-height: 400px;
+   
+    
+    
+}
+.background{
+  background-image: url('../../assets/img/robotlog.png');
+  min-height: 80rem;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  position: relative;
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+   /*  gap: 8px;
+    margin: 10px;  */
+}
+a, a:visited {
+    color: #fff;
+}
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+input[type="email"],
+button,
+textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+label,
+button {
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.5rem;
+}
+.form-h3{
+    text-align: center;
+}
+
+input[type="submit"]{
+    /* width: 14rem;
+    align-items: center; */
+    background-color: black;
+    color:white
+}
