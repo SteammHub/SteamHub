@@ -17,18 +17,17 @@ import PrivateRoute from './utils/privateRoute';
 import Guide from './components/Guide';
 import Teacher from './components/Teacher';
 import LeaderBoard from './components/leaderBoard';
+import About from './components/about';
 
 
 
 function App() {
 const test = localStorage.getItem("authTokens")
+
+
+
   return (
     <div className="App">
-
-     {/* <Home /> */}
-     {/* <Landing /> */}
-     {/* <LoginPage /> */}
-
      {/* <Home /> */}
       {/* <Router>
      <AuthProvider>
@@ -61,7 +60,8 @@ const test = localStorage.getItem("authTokens")
  <Routes>
 
   <Route path='/' exact element={<Landing />} />
-  <Route path='/login' exact element={<LoginPage />} />
+  <Route path='/login'  element={<LoginPage />} />
+  <Route path='/About'  element={<About />} />
  
   <Route path='/Signup' element={<Signup />} />
   <Route element={<PrivateRoute />}>

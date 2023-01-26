@@ -7,7 +7,9 @@ import { NavBar } from "../components/NavBar";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = 'api/register';
+const EMI_REGEX =/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+const REGISTER_URL = 'http://3.87.56.10:800/api/register';
+
 
 const Register = () => {
     const userRef = useRef();
@@ -42,7 +44,7 @@ const Register = () => {
         setValidName(USER_REGEX.test(username));
     }, [username])
     useEffect(() => {
-        setValidEmail(USER_REGEX.test(email));
+        setValidEmail(EMI_REGEX.test(email));
     }, [email])
 
     useEffect(() => {
@@ -65,7 +67,7 @@ const Register = () => {
         }
         try {
             const response = await axios.post(REGISTER_URL,
-                JSON.stringify({ username, password,email}),
+                JSON.stringify({ username, password }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -78,7 +80,6 @@ const Register = () => {
             //clear state and controlled inputs
             setUsername('');
             setPassword('');
-           
             setMatchPwd('');
         } catch (err) {
             if (!err?.response) {
@@ -91,7 +92,6 @@ const Register = () => {
             errRef.current.focus();
         }
     }
-
     return (
         <div className="test">
             
@@ -128,14 +128,14 @@ const Register = () => {
                         />
 
                       <label htmlFor="email">
-                            Email:
+                           Email
                             <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validEmail || !email ? "hide" : "invalid"} />
                         </label>
                         <input
                             type="email"
                             id="email"
-                            ref={userRef}
+                            ref={emailRef}
                             autoComplete="off"
                             onChange={(e) => setEmail(e.target.value)}
                             value={email}
@@ -145,35 +145,6 @@ const Register = () => {
                             onFocus={() => setEmailFocus(true)}
                             onBlur={() => setEmailFocus(false)}
                         />
-
-{/* const [email, setEmail] = useState('');
-    const [emailFocus, setEmailFocus] = useState(false);
-    const [validEmail, setValidEmail] = useState(false); */}
-
-                        {/* <label htmlFor="email">
-                            Email:
-                            <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validName || !email ? "hide" : "invalid"} />
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            ref={userRef}
-                            autoComplete="off"
-                            onChange={(e) => setEmail(e.target.value)}
-                            value={email}
-                            required
-                            aria-invalid={validEmail ? "false" : "true"}
-                            aria-describedby="uidnote"
-                            onFocus={() => setEmailFocus(true)}
-                            onBlur={() => setEmailFocus(false)}
-                        />  */}
-                        {/* <p id="uidnote" className={userFocus && user_name && !validName ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            4 to 24 characters.<br />
-                            Must begin with a letter.<br />
-                            Letters, numbers, underscores, hyphens allowed.
-                        </p> */}
 
 
                         <label htmlFor="password">
@@ -221,7 +192,7 @@ const Register = () => {
                             Must match the first password input field.
                         </p>
 
-                        <button disabled={!validName || !validPwd || !validMatch ? true : false}>Next</button>
+                        <button disabled={!validName || !validPwd ||!validEmail || !validMatch ? true : false}>Next</button>
                     </form>
                     <p>
                         Already registered?<br />

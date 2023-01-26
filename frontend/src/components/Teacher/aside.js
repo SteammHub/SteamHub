@@ -21,6 +21,7 @@ const Aside = ({props}) => {
         <li value="Math" > Math </li>
         <li value="Science"> Science </li>
         <li value="tech" > Technology </li>
+        <li> <a href="/home">Back to be player </a></li>
         </div>
         </div>
      

@@ -46,7 +46,7 @@ const Prpjectshome = () => {
       const [maps, setMaps] = useState([])
       useEffect(() => {
         const fetchData = async () => {
-          const result = await fetch('http://3.86.158.30:8000/game/map_list/')
+          const result = await fetch('http://3.87.56.10:8000/game/map_list/')
           const jsonResult = await result.json()
           setMaps(jsonResult)
         }

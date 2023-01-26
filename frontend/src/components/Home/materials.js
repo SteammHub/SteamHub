@@ -11,18 +11,18 @@ import AuthContext from "../../context/AuthContext";
 import axios from 'axios';
 
 
-const Materials = () => {
+const Materials = (props) => {
   const[showtab, setShowtab]= useState(1); 
   const[material,setMetrial]=useState([]);
   let {authTokens, logoutUser} = useContext(AuthContext)
 
-  
+
   const handletab = (e)=>{
     setShowtab(e);
     }
     useEffect(() => {
 
-    axios.get('http://3.86.158.30:8000/game/get_my_class/',{
+    axios.get('http://3.87.56.10:8000/game/get_my_class/',{
       headers: {
         'Content-Type': 'application/json',
         'Authorization':'JWT ' + String(authTokens.access)
@@ -39,6 +39,17 @@ const Materials = () => {
   });
 }, [])
 
+let newMaterial=material.filter((product)=>{
+  if(props.filterValue=='math'){
+    return product.name=='math'
+  }
+})
+
+function filterValueChanged(e){
+  console.log(e.target.value);
+  props.filterValueSelected(e.target.value)
+}
+
     return (   
         <div className='material-container'>
          <Container>
@@ -49,11 +60,15 @@ const Materials = () => {
          {material.map(item => (
         <div key={item.id}>
           <li class="nav-item" role="presentation" >
-          <button  className= {showtab===1? "nav-link active ques-btn": "nav-link ques-btn" } style={{backgroundColor:'white',color:"black",marginRight:"1rem"}}  onClick={()=>handletab(1)}>{item.name}</button>
+          <button  className= {showtab===item.id ? "nav-link active ques-btn": "nav-link ques-btn" } value={item.name} style={{backgroundColor:'white',color:"black",marginRight:"1rem"}}  onClick={()=>setShowtab(item.id)}>{item.name}</button>
           </li>
           <div class="tab-content text-dark" id="pills-tabContent" style={{backgroundColor:"#121212"}}>
+          <div  className= { showtab===1 ? "tab-pane fade show active": "tab-pane fade"} style={{backgroundColor:"#121212"}} >
+         
+           
+      </div>
+ 
 
-{/* start tab 1*/} 
 
 </div>
           
@@ -75,21 +90,7 @@ const Materials = () => {
       <div className="row">
         <div className="col-sm-12 bg-drak">      
               
-       {/* <ul class="nav nav-pills mb-3 mt-1" id="pills-tab" role="tablist" style={{marginLeft:"30%"}}>
-          <li class="nav-item" role="presentation" >
-          <button  className= {showtab===1? "nav-link active ques-btn": "nav-link ques-btn" } style={{backgroundColor:'white',color:"black",marginRight:"1rem"}}  onClick={()=>handletab(1)}>{material.name}</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button className={ showtab===2 ? "nav-link active ques-btn": "nav-link ques-btn" } style={{backgroundColor:'white',color:"black",marginRight:"1rem"}}  onClick={()=>handletab(2)}>Math</button>
-          </li>
-
-          <li class="nav-item" role="presentation">
-            <button className={ showtab===3 ? "nav-link active ques-btn": "nav-link ques-btn"} style={{backgroundColor:'white',color:"black",marginRight:"1rem"}}  onClick={()=>handletab(3)}>Technology</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button className={ showtab===4 ? "nav-link active ques-btn": "nav-link ques-btn"} style={{backgroundColor:'white',color:"black",marginRight:"1rem"}}  onClick={()=>handletab(4)}>Problem Solving</button>
-          </li>
-      </ul> */}
+  
 
       <div class="tab-content text-dark" id="pills-tabContent" style={{backgroundColor:"#121212"}}>
 
@@ -102,11 +103,11 @@ const Materials = () => {
         <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src="https://www.training.com.au/wp-content/uploads/science-stem-feature.png" />
       <Card.Body>
-        <Card.Title>Science-Mr.Salem</Card.Title>
+        <Card.Title>{material.id===1?'problem solving':material.id===2?'math':'Science'}</Card.Title>
         <Card.Text>
   
         </Card.Text>
-        {/* <Button variant="primary">Go somewhere</Button> */}
+   
       </Card.Body>
     </Card>
            </Item>
@@ -134,7 +135,7 @@ const Materials = () => {
         <Card.Text>
   
         </Card.Text>
-        {/* <Button variant="primary">Go somewhere</Button> */}
+       
       </Card.Body>
     </Card>
            </Item>

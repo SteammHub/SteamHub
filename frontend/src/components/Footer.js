@@ -17,9 +17,9 @@ export const Footer = () => {
           </Col>
           <Col size={12} sm={6} className="text-center text-sm-end">
             <div className="social-icon">
-              <a href="#"><img src={navIcon1} alt="Icon" /></a>
-              <a href="#"><img src={navIcon2} alt="Icon" /></a>
-              <a href="#"><img src={navIcon3} alt="Icon" /></a>
+            <a href="https://www.linkedin.com/company/steam-center/"><img src={navIcon1} alt="" /></a>
+                <a href="https://www.facebook.com/steamcenterjo"><img src={navIcon2} alt="" /></a>
+                <a href="https://www.instagram.com/steam_center_jo/"><img src={navIcon3} alt="" /></a>
             </div>
             <p>SteamHub is available for free thanks to support from our donors. We are grateful to our Founding Partners <br /> </p>
           </Col>
