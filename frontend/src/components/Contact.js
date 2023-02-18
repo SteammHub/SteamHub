@@ -25,7 +25,7 @@ export const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Sending...");
-    let response = await fetch("http://3.87.56.10:8000/register", {
+    let response = await fetch("https://auth.steamhub.cloud/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
