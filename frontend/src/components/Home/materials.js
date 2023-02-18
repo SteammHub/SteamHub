@@ -22,7 +22,7 @@ const Materials = (props) => {
     }
     useEffect(() => {
 
-    axios.get('http://3.87.56.10:8000/game/get_my_class/',{
+    axios.get('https://auth.steamhub.cloud/game/get_my_class/',{
       headers: {
         'Content-Type': 'application/json',
         'Authorization':'JWT ' + String(authTokens.access)
