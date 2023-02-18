@@ -15,7 +15,7 @@ export const AuthProvider = ({children}) => {
     let loginUser = async (e )=> {
         e.preventDefault()
         console.log("in login");
-        let response = await fetch('http://3.87.56.10:8000/api/token/', {
+        let response = await fetch('https://auth.steamhub.cloud/api/token/', {
             method:'POST',
             headers:{
                 'Content-Type':'application/json',
@@ -46,7 +46,7 @@ export const AuthProvider = ({children}) => {
 
     let updateToken = async ()=> {
 
-        let response = await fetch('http://3.87.56.10:8000/api/token/refresh/', {
+        let response = await fetch('https://auth.steamhub.cloud/api/token/refresh/', {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
