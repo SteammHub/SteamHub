@@ -8,7 +8,7 @@ import { NavBar } from "../components/NavBar";
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMI_REGEX =/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-const REGISTER_URL = 'http://3.87.56.10:800/api/register';
+const REGISTER_URL = 'https://auth.steamhub.cloud/api/register';
 
 
 const Register = () => {
