@@ -26,7 +26,7 @@ export const NavBarhome = () => {
   
 
   const submitCode = async () => {
-    const result = await fetch('http://3.87.56.10:8000/game/join_class/', {
+    const result = await fetch('https://auth.steamhub.cloud/game/join_class/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
